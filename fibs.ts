@@ -6,6 +6,17 @@ export const projectDesc: fibs.ProjectDesc = {
 
     // define a couple of remote imports
     imports: {
+        sokol: {
+            url: 'https://github.com/floooh/sokol',
+            projectDesc: {
+                targets: {
+                    // header-only libs are declared as 'void' targets,
+                    // such targets may define include directories, compile options
+                    // etc... for other targets
+                    sokol: { type: 'void', includeDirectories: [ '.', './util' ] }
+                }
+            }
+        },
         imgui: {
             url: 'https://github.com/ocornut/imgui',
             ref: 'v1.88',
@@ -14,7 +25,6 @@ export const projectDesc: fibs.ProjectDesc = {
             // or without both an import can also just provide a couple of files
             // from a remote source
             projectDesc: {
-                name: 'imgui',
                 targets: {
                     imgui: {
                         type: 'lib',
@@ -38,7 +48,7 @@ export const projectDesc: fibs.ProjectDesc = {
             type: 'plain-exe',
             dir: 'src',
             sources: ['hello.c'],
-            libs: ['print', 'imgui'],
+            libs: ['sokol', 'print', 'imgui'],
         },
         // a simple local library
         print: {
