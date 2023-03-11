@@ -38,6 +38,18 @@ export const projectDesc: fibs.ProjectDesc = {
                         ],
                         includeDirectories: [ '.' ]
                     }
+                },
+                // imports can also provide their own fibs commands, e.g.
+                // this adds a 'fibs hello-imgui' subcommand:
+                commands: {
+                    'hello-imgui': {
+                        help: () => {
+                            fibs.log.help([ 'hello-imgui'], 'an example command from an import');
+                        },
+                        run: async (project: fibs.Project) => {
+                            fibs.log.print(`Hello from imgui (args: ${Deno.args.join(',')})`);
+                        }
+                    }
                 }
             }
         },
