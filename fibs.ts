@@ -76,6 +76,15 @@ function cimguiDesc(): fibs.ProjectDesc {
                 includeDirectories: {
                     public: [ '.' ]
                 },
+                compileOptions: {
+                    private: (context) => {
+                        if (context.compiler === 'gcc') {
+                            return ['-Wno-stringop-overflow'];
+                        } else {
+                            return [];
+                        }
+                    }
+                }
             }
         }
     }
@@ -114,6 +123,8 @@ function sokolDesc(): fibs.ProjectDesc {
                             case 'macos':
                             case 'ios':
                                 return ['-ObjC'];
+                            case 'linux':
+                                return ['-pthread'];
                             default:
                                 return [];
                         }
@@ -124,6 +135,8 @@ function sokolDesc(): fibs.ProjectDesc {
                         switch (context.config.platform) {
                             case 'emscripten':
                                 return [ '-sUSE_WEBGL2=1', "-sMALLOC='emmalloc'" ];
+                            case 'linux':
+                                return [ '-pthread', '-lpthread' ];
                             default:
                                 return [];
                         }
@@ -140,6 +153,8 @@ function sokolDesc(): fibs.ProjectDesc {
                                 '-framework MetalKit',
                                 '-framework AudioToolbox',
                             ];
+                        case 'linux':
+                            return [ 'X11', 'Xi', 'Xcursor', 'GL', 'asound' ];
                         default:
                             return [];
                     }
