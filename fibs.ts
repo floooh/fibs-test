@@ -38,7 +38,7 @@ export const projectDesc: fibs.ProjectDesc = {
         },
         cimgui: {
             url: 'https://github.com/cimgui/cimgui',
-            ref: 'v1.89.3',
+            ref: '1.89.3',
             projectDesc: cimguiDesc(),
         },
     },
