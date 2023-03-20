@@ -49,7 +49,7 @@ export const projectDesc: fibs.ProjectDesc = {
             type: 'windowed-exe',
             dir: 'src',
             sources: ['hello.c'],
-            libs: ['sokol', 'cimgui'],
+            libs: ['sokol-interface', 'cimgui'],
         },
     },
 }
@@ -96,7 +96,7 @@ function sokolDesc(): fibs.ProjectDesc {
             // header-only libs can be declared as 'interface' targets,
             // such targets may define include directories, compile options
             // etc... for other targets but don't produce a build artefact
-            sokol: {
+            'sokol-interface': {
                 type: 'interface',
                 includeDirectories: {
                     interface: [ '.', './util' ]
@@ -120,9 +120,8 @@ function sokolDesc(): fibs.ProjectDesc {
                 compileOptions: {
                     interface: (context) => {
                         switch (context.config.platform) {
-                            case 'macos':
-                            case 'ios':
-                                return ['-ObjC'];
+                            case 'macos': case 'ios':
+                                return ['--language', 'objective-c'];
                             case 'linux':
                                 return ['-pthread'];
                             default:
