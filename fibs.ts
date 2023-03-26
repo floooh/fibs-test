@@ -15,6 +15,14 @@ export const project: fibs.ProjectDesc = {
             dir: 'src',
             sources: ['hello.c'],
             libs: ['sokol-interface', 'cimgui'],
+            jobs: [
+                {
+                    job: 'copyfiles',
+                    args: {
+                        srcDir: '@targetsources:assets',
+                        files: [ 'bla.png', 'blub.png' ],
+                    }}
+            ]
         },
     },
 }
