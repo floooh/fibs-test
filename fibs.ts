@@ -6,22 +6,27 @@ export const project: fibs.ProjectDesc = {
     imports: {
         libs: {
             url: 'https://github.com/floooh/fibs-libs',
-            import: [ 'cimgui.ts', 'sokol.ts', 'stdoptions.ts' ],
+            import: [ 'cimgui.ts', 'sokol.ts' ],
         },
+        utils: {
+            url: 'https://github.com/floooh/fibs-utils',
+            import: [ 'stdoptions.ts', 'copyfiles.ts', 'embedfiles.ts' ]
+        }
     },
     targets: {
         hello: {
             type: 'windowed-exe',
             dir: 'src',
-            sources: ['hello.c'],
-            libs: ['sokol-interface', 'cimgui'],
+            sources: [ 'hello.c' ],
+            libs: ['sokol-autoconfig', 'cimgui'],
             jobs: [
                 {
                     job: 'copyfiles',
                     args: {
                         srcDir: '@targetsources:assets',
                         files: [ 'bla.png', 'blub.png' ],
-                    }}
+                    }
+                }
             ]
         },
     },
