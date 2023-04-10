@@ -17,8 +17,8 @@ export const project: fibs.ProjectDesc = {
         hello: {
             type: 'windowed-exe',
             dir: 'src',
-            sources: [ 'hello.c' ],
-            libs: ['sokol-autoconfig', 'cimgui'],
+            sources: () => [ 'hello.c' ],
+            libs: () => ['sokol-autoconfig', 'cimgui'],
             jobs: [
                 {
                     job: 'copyfiles',
@@ -29,5 +29,5 @@ export const project: fibs.ProjectDesc = {
                 }
             ]
         },
-    },
+    }
 }
