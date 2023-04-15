@@ -3,18 +3,21 @@ import * as fibs from 'https://raw.githubusercontent.com/floooh/fibs/main/mod.ts
 
 export const project: fibs.ProjectDesc = {
     name: 'fibs-test',
-    imports: {
-        libs: {
+    imports: [
+        {
+            name: 'libs',
             url: 'https://github.com/floooh/fibs-libs',
             import: [ 'cimgui.ts', 'sokol.ts' ],
         },
-        utils: {
+        {
+            name: 'utils',
             url: 'https://github.com/floooh/fibs-utils',
             import: [ 'stdoptions.ts', 'copyfiles.ts', 'embedfiles.ts' ]
         }
-    },
-    targets: {
-        hello: {
+    ],
+    targets: [
+        {
+            name: 'hello',
             type: 'windowed-exe',
             dir: 'src',
             sources: () => [ 'hello.c' ],
@@ -29,5 +32,5 @@ export const project: fibs.ProjectDesc = {
                 }
             ]
         },
-    }
+    ]
 }
