@@ -19,7 +19,6 @@ export const project: fibs.ProjectDesc = {
         {
             name: 'hello',
             type: 'windowed-exe',
-            dir: 'src',
             sources: () => [ 'hello.c' ],
             libs: () => ['sokol-autoconfig', 'cimgui'],
         },
