@@ -12,7 +12,7 @@ export const project: fibs.ProjectDesc = {
         {
             name: 'utils',
             url: 'https://github.com/floooh/fibs-utils',
-            import: [ 'stdoptions.ts', 'copyfiles.ts', 'embedfiles.ts' ]
+            import: [ 'stdoptions.ts' ],
         }
     ],
     targets: [
@@ -22,15 +22,6 @@ export const project: fibs.ProjectDesc = {
             dir: 'src',
             sources: () => [ 'hello.c' ],
             libs: () => ['sokol-autoconfig', 'cimgui'],
-            jobs: [
-                {
-                    job: 'copyfiles',
-                    args: {
-                        srcDir: '@targetsources:assets',
-                        files: [ 'bla.png', 'blub.png' ],
-                    }
-                }
-            ]
         },
     ]
 }
