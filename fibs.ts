@@ -1,6 +1,8 @@
 import * as fibs from 'https://deno.land/x/fibs@v1.0.0/mod.ts'
 //import * as fibs from '../fibs/mod.ts';
 
+if (import.meta.main) fibs.main();
+
 export const project: fibs.ProjectDesc = {
     name: 'fibs-test',
     imports: [
