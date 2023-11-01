@@ -12,7 +12,7 @@ Next, clone, build and run like this:
 git clone https://github.com/floooh/fibs-test
 cd fibs-test
 ./fibs build
-./fibs list target --exe
+./fibs list targets --exe
 ./fibs run hello
 ```
 
