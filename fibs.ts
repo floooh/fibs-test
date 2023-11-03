@@ -1,4 +1,4 @@
-import * as fibs from 'https://deno.land/x/fibs/mod.ts'
+import * as fibs from 'https://deno.land/x/fibs@v1.6.0/mod.ts'
 //import * as fibs from '../fibs/mod.ts';
 
 if (import.meta.main) fibs.main();
@@ -27,7 +27,7 @@ export const project: fibs.ProjectDesc = {
             name: 'hello',
             type: 'windowed-exe',
             sources: () => [ 'hello.c' ],
-            libs: () => ['sokol-autoconfig', 'cimgui'],
+            deps: () => ['sokol-autoconfig', 'cimgui'],
         },
     ]
 }
